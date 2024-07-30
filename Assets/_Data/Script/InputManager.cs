@@ -10,6 +10,9 @@ public class InputManager : MonoBehaviour
     [SerializeField] protected Vector3 mouseWorldPos;
     public Vector3 MouseWorldPos { get => mouseWorldPos; }
 
+    [SerializeField] protected float onFiring;
+    public float OnFiring { get => onFiring; }
+
     private void Awake()
     {
         if (InputManager.instance != null)
@@ -17,6 +20,11 @@ public class InputManager : MonoBehaviour
             Debug.LogError("ONLY 1 instances of InputManager exist");
         }
         InputManager.instance = this;
+    }
+
+    private void Update()
+    {
+        this.GetMouseDown();
     }
 
     private void FixedUpdate()
@@ -28,5 +36,10 @@ public class InputManager : MonoBehaviour
     protected virtual void GetMousePos()
     {
         this.mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    }
+
+    protected virtual void GetMouseDown()
+    {
+        this.onFiring = Input.GetAxis("Fire1");
     }
 }
