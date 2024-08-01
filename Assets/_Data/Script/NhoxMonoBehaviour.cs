@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class NhoxMonoBehaviour : MonoBehaviour
 {
-    protected virtual void Reset()
+    
+    protected virtual void Start()
+    {
+        //For override
+    }
+
+    protected virtual void Awake()
     {
         this.LoadComponents();
     }
 
-    protected virtual void Awake()
+    protected virtual void Reset()
     {
         this.LoadComponents();
     }

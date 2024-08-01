@@ -4,13 +4,25 @@ using UnityEngine;
 
 public abstract class Spawner : NhoxMonoBehaviour
 {
-
+    [SerializeField] protected Transform holder;
     [SerializeField] protected List<Transform> prefabs;
+    [SerializeField] protected List<Transform> poolObjs;
 
     protected override void LoadComponents()
     {
         base.LoadComponents();
         this.LoadPrefabs();
+        this.LoadHolder();
+    }
+
+    protected virtual void LoadHolder()
+    {
+       if(this.holder != null)
+       {
+           return;
+       }
+       this.holder = transform.Find("Holder");
+        Debug.Log(transform.name + ": Load Holder", gameObject);
     }
 
     protected virtual void LoadPrefabs()
@@ -48,9 +60,33 @@ public abstract class Spawner : NhoxMonoBehaviour
             return null;
         }
 
-        Transform newPrefab = Instantiate(prefab, spawnPos, rotation);
+        Transform newPrefab = this.GetObjectFromPool(prefab);
+        newPrefab.SetPositionAndRotation(spawnPos, rotation);
 
+        newPrefab.parent = this.holder;
         return newPrefab;
+    }
+
+    protected virtual Transform GetObjectFromPool(Transform prefab)
+    {
+        foreach(Transform poolObj in this.poolObjs)
+        {
+            if (poolObj.name == prefab.name)
+            {
+                this.poolObjs.Remove(poolObj);
+                return poolObj;
+            }
+        }
+
+        Transform newPrefab = Instantiate(prefab);
+        newPrefab.name = prefab.name;
+        return newPrefab;
+    }
+
+    public virtual void Despawn(Transform obj)
+    {
+        this.poolObjs.Add(obj);
+        obj.gameObject.SetActive(false);
     }
 
     public virtual Transform GetPrefabByName(string prefabName)
