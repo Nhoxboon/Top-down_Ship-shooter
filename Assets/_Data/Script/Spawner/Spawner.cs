@@ -5,6 +5,10 @@ using UnityEngine;
 public abstract class Spawner : NhoxMonoBehaviour
 {
     [SerializeField] protected Transform holder;
+
+    [SerializeField] protected int spawnerCount = 0;
+    public int SpawnerCount { get => this.spawnerCount; }
+
     [SerializeField] protected List<Transform> prefabs;
     [SerializeField] protected List<Transform> poolObjs;
 
@@ -60,10 +64,18 @@ public abstract class Spawner : NhoxMonoBehaviour
             return null;
         }
 
+        return this.Spawn(prefab, spawnPos, rotation);
+    }
+
+    public virtual Transform Spawn(Transform prefab, Vector3 spawnPos, Quaternion rotation)
+    {
+
+
         Transform newPrefab = this.GetObjectFromPool(prefab);
         newPrefab.SetPositionAndRotation(spawnPos, rotation);
 
         newPrefab.parent = this.holder;
+        this.spawnerCount++;
         return newPrefab;
     }
 
@@ -87,6 +99,7 @@ public abstract class Spawner : NhoxMonoBehaviour
     {
         this.poolObjs.Add(obj);
         obj.gameObject.SetActive(false);
+        this.spawnerCount--;
     }
 
     public virtual Transform GetPrefabByName(string prefabName)
@@ -100,5 +113,11 @@ public abstract class Spawner : NhoxMonoBehaviour
         }
 
         return null;
+    }
+
+    public virtual Transform RandomPrefab()
+    {
+        int rand = Random.Range(0, this.prefabs.Count);
+        return this.prefabs[rand];
     }
 }
