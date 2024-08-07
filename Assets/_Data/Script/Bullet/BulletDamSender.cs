@@ -15,7 +15,7 @@ public class BulletDamSender : DamageSender
     protected virtual void LoadBulletCtrl()
     {
         if (this.bulletCtrl != null) return;
-        this.bulletCtrl = transform.parent.GetComponentInChildren<BulletCtrl>();
+        this.bulletCtrl = transform.parent.GetComponent<BulletCtrl>();
         Debug.Log(transform.name + ": LoadBulletCtrl", gameObject);
     }
 

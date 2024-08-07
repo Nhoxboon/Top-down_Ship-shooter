@@ -178,8 +178,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 193060327}
-  - component: {fileID: 193060329}
   - component: {fileID: 193060328}
+  - component: {fileID: 193060329}
   m_Layer: 0
   m_Name: DamageReceiver
   m_TagString: Untagged
@@ -388,7 +388,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   model: {fileID: 1565698132}
-  junkDespawn: {fileID: 0}
+  junkDespawn: {fileID: 1281386476}
 --- !u!1 &382990326
 GameObject:
   m_ObjectHideFlags: 0
@@ -1658,7 +1658,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.32, y: 0.32}
+  m_Size: {x: 0.48, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1673,8 +1673,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1682382261}
-  - component: {fileID: 1682382262}
   - component: {fileID: 1682382263}
+  - component: {fileID: 1682382262}
   m_Layer: 0
   m_Name: DamageReceiver
   m_TagString: Untagged
@@ -1712,11 +1712,11 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
+  m_Radius: 0.2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1682382263
 MonoBehaviour:
@@ -1732,7 +1732,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sphereCollider: {fileID: 1682382262}
   hp: 1
-  hpMax: 1
+  hpMax: 2
   isDead: 0
   junkCtrl: {fileID: 352078461}
 --- !u!1 &1742364904
@@ -2107,7 +2107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   model: {fileID: 1679694329}
-  junkDespawn: {fileID: 0}
+  junkDespawn: {fileID: 432518548}
 --- !u!1 &1400419663156657
 GameObject:
   m_ObjectHideFlags: 0

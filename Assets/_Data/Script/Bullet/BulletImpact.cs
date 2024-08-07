@@ -8,7 +8,7 @@ using UnityEngine;
 
 public class BulletImpact : BulletAbstract
 {
-    [Header("Bullet Impact")]
+    [Header("Bullet Impart")]
     [SerializeField] protected SphereCollider sphereCollider;
     [SerializeField] protected Rigidbody _rigidbody;
 
@@ -16,36 +16,28 @@ public class BulletImpact : BulletAbstract
     {
         base.LoadComponents();
         this.LoadCollider();
-        this.LoadRigidbody();
+        this.LoadRigibody();
     }
 
     protected virtual void LoadCollider()
     {
-        if (this.sphereCollider != null)
-        {
-            return;
-        }
-
+        if (this.sphereCollider != null) return;
         this.sphereCollider = GetComponent<SphereCollider>();
         this.sphereCollider.isTrigger = true;
         this.sphereCollider.radius = 0.05f;
         Debug.Log(transform.name + ": LoadCollider", gameObject);
     }
 
-    protected virtual void LoadRigidbody()
+    protected virtual void LoadRigibody()
     {
-        if (this._rigidbody != null)
-        {
-            return;
-        }
-
+        if (this._rigidbody != null) return;
         this._rigidbody = GetComponent<Rigidbody>();
         this._rigidbody.isKinematic = true;
-        Debug.Log(transform.name + ": LoadRigidbody", gameObject);
+        Debug.Log(transform.name + ": LoadRigibody", gameObject);
     }
 
     protected virtual void OnTriggerEnter(Collider other)
     {
-       this.bulletCtrl.DamageSender.Send(other.transform);
+        this.bulletCtrl.DamageSender.Send(other.transform);
     }
 }

@@ -9,7 +9,7 @@ public class DamageSender : NhoxMonoBehaviour
     public virtual void Send(Transform obj)
     {
         DamageReceiver damageReceiver = obj.GetComponentInChildren<DamageReceiver>();
-        if(damageReceiver == null)
+        if (damageReceiver == null)
         {
             return;
         }

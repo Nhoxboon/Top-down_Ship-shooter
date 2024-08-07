@@ -16,7 +16,7 @@ public class JunkDamReceiver : DamageReceiver
     protected virtual void LoadJunkCtrl()
     {
         if (this.junkCtrl != null) return;
-        this.junkCtrl = transform.parent.GetComponentInChildren<JunkCtrl>();
+        this.junkCtrl = transform.parent.GetComponent<JunkCtrl>();
         Debug.Log(transform.name + ": LoadJunkCtrl", gameObject);
     }
 

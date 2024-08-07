@@ -12,13 +12,11 @@ public class DamageReceiver : NhoxMonoBehaviour
     [SerializeField] protected int hpMax = 2;
     [SerializeField] protected bool isDead = false;
 
-    protected override void Start()
+
+    protected override void OnEnable()
     {
-        base.Start();
         this.Reborn();
     }
-
-    
 
     protected override void LoadComponents()
     {
@@ -45,14 +43,18 @@ public class DamageReceiver : NhoxMonoBehaviour
         this.isDead = false;
     }
 
-    public virtual void Add(int deduct)
+    public virtual void Add(int add)
     {
-        this.hp += deduct;
+        if(this.isDead) return;
+
+        this.hp += add;
         if(this.hp > this.hpMax) this.hp = this.hpMax;
     }
 
     public virtual void Deduct(int deduct)
     {
+        if(this.isDead) return;
+
         this.hp -= deduct;
         if(this.hp < 0) this.hp = 0;
 
