@@ -4,7 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(SphereCollider))]
 
-public class DamageReceiver : NhoxMonoBehaviour
+public abstract class DamageReceiver : NhoxMonoBehaviour
 {
     [Header("Damage Receiver")]
     [SerializeField] protected SphereCollider sphereCollider;
@@ -12,9 +12,14 @@ public class DamageReceiver : NhoxMonoBehaviour
     [SerializeField] protected int hpMax = 2;
     [SerializeField] protected bool isDead = false;
 
-
     protected override void OnEnable()
     {
+        this.Reborn();
+    }
+
+    protected override void ResetValue()
+    {
+        base.ResetValue();
         this.Reborn();
     }
 
@@ -76,8 +81,5 @@ public class DamageReceiver : NhoxMonoBehaviour
         this.OnDead();
     }
 
-    protected virtual void OnDead()
-    {
-        //For override
-    }
+    protected abstract void OnDead();
 }

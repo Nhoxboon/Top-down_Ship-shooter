@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class JunkSpawnerRandom : NhoxMonoBehaviour
 {
+    [Header("Junk Random")]
     [SerializeField] protected JunkSpawnerCtrl junkSpawnerCtrl;
     [SerializeField] protected float randomLimit = 9f;
     [SerializeField] protected float randomDelay = 1f;
