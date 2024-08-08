@@ -38,11 +38,15 @@ public class BulletImpact : BulletAbstract
 
     protected virtual void OnTriggerEnter(Collider other)
     {
+        //Tranh loi bullet cung tac dong voi Ship(ShipShooting, BulletImpact, BulletCtrl)
+        if (other.transform.parent == bulletCtrl.Shooter) return;
+
+
         this.bulletCtrl.DamageSender.Send(other.transform);
-        this.createImpactFX();
+        this.CreateImpactFX();
     }
 
-    protected virtual void createImpactFX()
+    protected virtual void CreateImpactFX()
     {
         string fxName = this.GetImpactFX();
 

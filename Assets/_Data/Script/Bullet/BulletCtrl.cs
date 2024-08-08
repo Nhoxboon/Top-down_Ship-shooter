@@ -10,8 +10,8 @@ public class BulletCtrl : NhoxMonoBehaviour
     [SerializeField] protected BulletDespawn bulletDespawn;
     public BulletDespawn BulletDespawn { get => bulletDespawn; }
 
-   /* [SerializeField] protected Transform shooter;
-    public Transform Shooter => shooter;*/
+    [SerializeField] protected Transform shooter;
+    public Transform Shooter => shooter;
 
 
     protected override void LoadComponents()
@@ -35,8 +35,9 @@ public class BulletCtrl : NhoxMonoBehaviour
         Debug.Log(transform.name + ": LoadBulletDespawn", gameObject);
     }
 
-    /*public virtual void SetShotter(Transform shooter)
+    //Tranh loi bullet cung tac dong voi Ship (ShipShooting, BulletImpact, BulletCtrl)
+    public virtual void SetShotter(Transform shooter)
     {
         this.shooter = shooter;
-    }*/
+    }
 }

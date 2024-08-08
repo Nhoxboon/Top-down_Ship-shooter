@@ -44,6 +44,10 @@ public class ShipShooting : MonoBehaviour
             return;
         }
         newBullet.gameObject.SetActive(true);
+
+        //Tranh loi bullet cung tac dong voi Ship(ShipShooting, BulletImpact, BulletCtrl)
+        BulletCtrl bulletCtrl = newBullet.GetComponent<BulletCtrl>();
+        bulletCtrl.SetShotter(transform.parent);
     }
 
     protected virtual bool IsShooting()
