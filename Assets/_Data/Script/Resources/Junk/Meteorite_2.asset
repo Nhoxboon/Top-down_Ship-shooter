@@ -16,6 +16,6 @@ MonoBehaviour:
   hpMax: 4
   dropList:
   - itemSO: {fileID: 11400000, guid: 4d638affaf88f9249a4ba96cfbbb948f, type: 2}
-    dropRate: 70000
+    dropRate: 0
     minDrop: 0
     maxDrop: 0
