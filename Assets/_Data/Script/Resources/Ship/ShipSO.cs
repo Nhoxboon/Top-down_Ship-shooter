@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "Ship", menuName = "ScriptableObject/Ship")]
+[CreateAssetMenu(fileName = "Ship", menuName = "SO/Ship")]
 
 public class ShipSO : ScriptableObject
 {
