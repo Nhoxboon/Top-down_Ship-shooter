@@ -43,10 +43,10 @@ public class BulletImpact : BulletAbstract
 
 
         this.bulletCtrl.DamageSender.Send(other.transform);
-        this.CreateImpactFX();
+        
     }
 
-    protected virtual void CreateImpactFX()
+    /*protected virtual void CreateImpactFX(Collider other)
     {
         string fxName = this.GetImpactFX();
 
@@ -59,5 +59,5 @@ public class BulletImpact : BulletAbstract
     protected virtual string GetImpactFX()
     {
         return FXSpawner.impact1;
-    }
+    }*/
 }
