@@ -1,12 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 [RequireComponent(typeof(SphereCollider))]
 [RequireComponent(typeof(Rigidbody))]
-
-
 public class ItemLooter : NhoxMonoBehaviour
 {
     [SerializeField] protected Inventory inventory;
@@ -23,46 +21,42 @@ public class ItemLooter : NhoxMonoBehaviour
 
     protected virtual void LoadInventory()
     {
-        if (inventory != null)
-        {
-            return;
-        }
+        if (this.inventory != null) return;
         this.inventory = transform.parent.GetComponent<Inventory>();
-        Debug.Log(transform.name + " Load Inventory", gameObject);
+        Debug.LogWarning(transform.name + " LoadInventory", gameObject);
     }
 
     protected virtual void LoadTrigger()
     {
-        if (_collider != null)
-        {
-            return;
-        }
-        _collider = GetComponent<SphereCollider>();
-        _collider.isTrigger = true;
-        _collider.radius = 0.3f;
-        Debug.Log(transform.name + " Load Trigger", gameObject);
+        if (this._collider != null) return;
+        this._collider = transform.GetComponent<SphereCollider>();
+        this._collider.isTrigger = true;
+        this._collider.radius = 0.3f;
+        Debug.LogWarning(transform.name + " LoadTrigger", gameObject);
     }
 
     protected virtual void LoadRigidbody()
     {
-        if (_rigidbody != null)
-        {
-            return;
-        }
-        _rigidbody = GetComponent<Rigidbody>();
-        _rigidbody.isKinematic = true;
-        _rigidbody.useGravity = false;
-        Debug.Log(transform.name + " Load Rigidbody", gameObject);
+        if (this._rigidbody != null) return;
+        this._rigidbody = transform.GetComponent<Rigidbody>();
+        this._rigidbody.useGravity = false;
+        this._rigidbody.isKinematic = true;
+        Debug.LogWarning(transform.name + " LoadRigidbody", gameObject);
     }
 
     protected virtual void OnTriggerEnter(Collider collider)
     {
+
         ItemPickupable itemPickupable = collider.GetComponent<ItemPickupable>();
-        if(itemPickupable == null)
+        if (itemPickupable == null) return;
+
+        ItemCode itemCode = itemPickupable.GetItemCode();
+        if (this.inventory.AddItem(itemCode, 1))
         {
-            return;
+            itemPickupable.Picked();
         }
-        Debug.Log(collider.name);
-        Debug.Log(collider.transform.parent.name);
     }
+
+
+
 }
