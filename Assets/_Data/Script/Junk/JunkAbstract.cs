@@ -4,6 +4,8 @@ using UnityEngine;
 
 public abstract class JunkAbstract : NhoxMonoBehaviour
 {
+    [Header("Junk Abstract")]
+
     [SerializeField] protected JunkCtrl junkCtrl;
     public JunkCtrl JunkCtrl { get => this.junkCtrl; }
 

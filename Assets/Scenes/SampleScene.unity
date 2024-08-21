@@ -672,7 +672,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 424152338}
-  - component: {fileID: 424152337}
+  - component: {fileID: 424152339}
   m_Layer: 0
   m_Name: Despawn
   m_TagString: Untagged
@@ -680,21 +680,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &424152337
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 424152336}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43847388a54a8b141b1df3d5f82bbc60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  disLimit: 25
-  distance: 0
-  mainCam: {fileID: 519420031}
 --- !u!4 &424152338
 Transform:
   m_ObjectHideFlags: 0
@@ -710,6 +695,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1932445360}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &424152339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424152336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9bb17d6bc6610c42a0f89d615b4de77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disLimit: 70
+  distance: 0
+  mainCam: {fileID: 519420031}
 --- !u!1 &432518546
 GameObject:
   m_ObjectHideFlags: 0
@@ -1212,7 +1212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a54a38b5e2411d44a9a9264e7500e1a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  junkCtrl: {fileID: 1608405058}
+  itemCtrl: {fileID: 1608405058}
   _collider: {fileID: 778606755}
 --- !u!135 &778606755
 SphereCollider:
@@ -1233,7 +1233,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.1
+  m_Radius: 0.2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &779760548
 GameObject:
@@ -1292,7 +1292,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 868894516}
-  - component: {fileID: 868894515}
+  - component: {fileID: 868894517}
   m_Layer: 0
   m_Name: Despawn
   m_TagString: Untagged
@@ -1300,21 +1300,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &868894515
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 868894514}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43847388a54a8b141b1df3d5f82bbc60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  disLimit: 25
-  distance: 0
-  mainCam: {fileID: 519420031}
 --- !u!4 &868894516
 Transform:
   m_ObjectHideFlags: 0
@@ -1330,6 +1315,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1608405057}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &868894517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 868894514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9bb17d6bc6610c42a0f89d615b4de77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disLimit: 70
+  distance: 0
+  mainCam: {fileID: 519420031}
 --- !u!1 &906046352
 GameObject:
   m_ObjectHideFlags: 0
@@ -1706,7 +1706,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a54a38b5e2411d44a9a9264e7500e1a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  junkCtrl: {fileID: 1932445361}
+  itemCtrl: {fileID: 1932445361}
   _collider: {fileID: 1251327081}
 --- !u!135 &1251327081
 SphereCollider:
@@ -1727,7 +1727,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.1
+  m_Radius: 0.2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1281386474
 GameObject:
@@ -2350,12 +2350,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1608405056}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c253d6dde0784f6478f3bb5dfbe8ffe9, type: 3}
+  m_Script: {fileID: 11500000, guid: c40416886438fcf4c8af6d77ce718c6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  model: {fileID: 210748818}
-  junkDespawn: {fileID: 868894515}
-  junkSO: {fileID: 11400000, guid: 44f86e70be8c8854ead13b9bf2533852, type: 2}
+  itemDespawn: {fileID: 868894517}
 --- !u!1 &1679694328
 GameObject:
   m_ObjectHideFlags: 0
@@ -2866,12 +2864,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1932445359}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c253d6dde0784f6478f3bb5dfbe8ffe9, type: 3}
+  m_Script: {fileID: 11500000, guid: c40416886438fcf4c8af6d77ce718c6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  model: {fileID: 1940237085}
-  junkDespawn: {fileID: 424152337}
-  junkSO: {fileID: 11400000, guid: b5f1d9d00aa07a54e9487863ec417dd2, type: 2}
+  itemDespawn: {fileID: 424152339}
 --- !u!1 &1940237084
 GameObject:
   m_ObjectHideFlags: 0
