@@ -5,25 +5,16 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 
 [RequireComponent(typeof(SphereCollider))]
 [RequireComponent(typeof(Rigidbody))]
-public class ItemLooter : NhoxMonoBehaviour
+public class ItemLooter : InventoryAbstract
 {
-    [SerializeField] protected Inventory inventory;
     [SerializeField] protected SphereCollider _collider;
     [SerializeField] protected Rigidbody _rigidbody;
 
     protected override void LoadComponents()
     {
         base.LoadComponents();
-        this.LoadInventory();
         this.LoadTrigger();
         this.LoadRigidbody();
-    }
-
-    protected virtual void LoadInventory()
-    {
-        if (this.inventory != null) return;
-        this.inventory = transform.parent.GetComponent<Inventory>();
-        Debug.LogWarning(transform.name + " LoadInventory", gameObject);
     }
 
     protected virtual void LoadTrigger()
