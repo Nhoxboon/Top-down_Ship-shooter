@@ -16,6 +16,25 @@ public class Inventory : NhoxMonoBehaviour
         this.AddItem(ItemCode.IronOre, 34);
     }
 
+    public virtual bool AddItem(ItemInventory itemInventory)
+    {
+        int addCount = itemInventory.itemCount;
+        ItemProfileSO itemProfile = itemInventory.itemProfile;
+        ItemCode itemCode = itemProfile.itemCode;
+        ItemType itemType = itemProfile.itemType;
+
+        if (itemType == ItemType.Equipment) return this.AddEquipment(itemInventory);
+        return this.AddItem(itemCode, addCount);
+    }
+
+    public virtual bool AddEquipment(ItemInventory itemInventory)
+    {
+        if (this.IsInventoryFull()) return false;
+        this.items.Add(itemInventory);
+        return true;
+    }
+
+
     public virtual bool AddItem(ItemCode itemCode, int addCount)
     {
 
@@ -155,9 +174,19 @@ public class Inventory : NhoxMonoBehaviour
 
             itemInventory.itemCount -= deduct;
         }
+
+        this.ClearEmptySlot();
     }
 
-
+    protected virtual void ClearEmptySlot()
+    {
+        ItemInventory itemInventory;
+        for (int i = 0; i < this.items.Count; i++)
+        {
+            itemInventory = this.items[i];
+            if (itemInventory.itemCount == 0) this.items.RemoveAt(i);
+        }
+    }
 
 
 
