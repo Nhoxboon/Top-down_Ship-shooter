@@ -14,6 +14,13 @@ public class ItemCtrl : NhoxMonoBehaviour
     {
         base.LoadComponents();
         this.LoadItemDespawn();
+        this.LoadItemInventory();
+    }
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        this.ResetItem();
     }
 
     protected virtual void LoadItemDespawn()
@@ -25,8 +32,32 @@ public class ItemCtrl : NhoxMonoBehaviour
 
     public virtual void SetItemInventory(ItemInventory itemInventory)
     {
-        this.itemInventory = itemInventory;
+        this.itemInventory = itemInventory.Clone();
+
+        //this.itemInventory = new ItemInventory();
+        //this.itemInventory.itemProfile = itemInventory.itemProfile;
+        //this.itemInventory.itemCount = itemInventory.itemCount;
+        //this.itemInventory.upgradeLevel = itemInventory.upgradeLevel;
     }
 
+    protected virtual void LoadItemInventory()
+    {
+        if(this.itemInventory.itemProfile != null)
+        {
+            return;
+        }
+
+        ItemCode itemCode = ItemCodeParser.FromString(transform.name);
+        ItemProfileSO itemProfile = ItemProfileSO.FindByItemCode(itemCode);
+        this.itemInventory.itemProfile = itemProfile;
+        this.ResetItem();
+        Debug.Log(transform.name + " :LoadItemInventory", gameObject);
+    }
+
+    protected virtual void ResetItem()
+    {
+        this.itemInventory.itemCount = 1;
+        this.itemInventory.upgradeLevel = 0;
+    }
 
 }

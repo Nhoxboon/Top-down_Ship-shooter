@@ -12,7 +12,7 @@ public class Inventory : NhoxMonoBehaviour
     {
         base.Start();
         this.AddItem(ItemCode.CopperSword, 1);
-        this.AddItem(ItemCode.GoldOre, 3);
+        this.AddItem(ItemCode.GoldOre, 30);
         this.AddItem(ItemCode.IronOre, 34);
     }
 
@@ -27,10 +27,18 @@ public class Inventory : NhoxMonoBehaviour
         return this.AddItem(itemCode, addCount);
     }
 
-    public virtual bool AddEquipment(ItemInventory itemInventory)
+    public virtual bool AddEquipment(ItemInventory itemPicked)
     {
         if (this.IsInventoryFull()) return false;
-        this.items.Add(itemInventory);
+
+        ItemInventory item = itemPicked.Clone();
+
+        //ItemInventory item = new ItemInventory();
+        //item.itemProfile = itemPicked.itemProfile;
+        //item.itemCount = itemPicked.itemCount;
+        //item.upgradeLevel = itemPicked.upgradeLevel;
+
+        this.items.Add(item);
         return true;
     }
 
