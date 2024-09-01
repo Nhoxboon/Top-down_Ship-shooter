@@ -35,4 +35,9 @@ public class NhoxMonoBehaviour : MonoBehaviour
     {
         //For override
     }
+
+    protected virtual void OnDisable()
+    {
+        //For override
+    }
 }
