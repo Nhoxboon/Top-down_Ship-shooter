@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class SpawnPoints : NhoxMonoBehaviour
+public class SpawnPoints : NhoxMonoBehaviour
 {
     [SerializeField] protected List<Transform> points;
 

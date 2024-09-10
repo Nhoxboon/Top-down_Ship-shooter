@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShipShooting : MonoBehaviour
+public abstract class ShipShooting : NhoxMonoBehaviour
 {
     [SerializeField] protected bool isShooting = false;
-    [SerializeField] protected float shootDelay = 1f;
+    [SerializeField] protected float shootDelay = 0.2f;
     [SerializeField] protected float shootTimer = 0f;
-    //[SerializeField] protected bool isReloaded = false;
 
    private void Update()
     {
         this.IsShooting();
-        //this.IsReloaded();
     }
 
     private void FixedUpdate()
@@ -37,7 +35,6 @@ public class ShipShooting : MonoBehaviour
         Vector3 spawnPos = transform.position;
         Quaternion rotation = transform.parent.rotation;
 
-        //Transform newBullet = Instantiate(this.bulletPrefab, spawnPos, rotation);
         Transform newBullet = BulletSpawner.Instance.Spawn(BulletSpawner.bulletOne, spawnPos, rotation);
         if (newBullet == null)
         {
@@ -50,17 +47,6 @@ public class ShipShooting : MonoBehaviour
         bulletCtrl.SetShotter(transform.parent);
     }
 
-    protected virtual bool IsShooting()
-    {
-        this.isShooting = InputManager.Instance.OnFiring == 1;
-        return isShooting;
-    }
+    protected abstract bool IsShooting();
 
-    
-   /* protected virtual bool IsReloaded()
-    {
-        this.isReloaded = shootTimer >= shootDelay;
-        if (this.shootTimer < shootDelay) this.shootTimer += Time.deltaTime;
-        return this.isReloaded;
-    }*/
 }

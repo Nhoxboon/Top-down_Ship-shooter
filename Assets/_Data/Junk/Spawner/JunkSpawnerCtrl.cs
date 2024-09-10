@@ -8,8 +8,8 @@ public class JunkSpawnerCtrl : NhoxMonoBehaviour
     public JunkSpawner JunkSpawner { get => junkSpawner; }
 
 
-    [SerializeField] protected JunkSpawnPoints spawnPoints;
-    public JunkSpawnPoints SpawnPoints { get => spawnPoints; }
+    [SerializeField] protected SpawnPoints spawnPoints;
+    public SpawnPoints SpawnPoints { get => spawnPoints; }
 
     protected override void LoadComponents()
     {
@@ -34,7 +34,7 @@ public class JunkSpawnerCtrl : NhoxMonoBehaviour
         {
             return;
         }
-        this.spawnPoints = Transform.FindObjectOfType<JunkSpawnPoints>();
+        this.spawnPoints = Transform.FindObjectOfType<SpawnPoints>();
         Debug.Log(transform.name + ": Load SpawnPoints", gameObject);
     }
 }
