@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShipMovement : NhoxMonoBehaviour
+public class ObjMovement : NhoxMonoBehaviour
 {
     [SerializeField] protected Vector3 targetPosition; 
     [SerializeField] protected float speed = 0.01f;
