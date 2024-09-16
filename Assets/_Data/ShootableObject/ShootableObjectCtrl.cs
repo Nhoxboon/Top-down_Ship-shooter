@@ -13,12 +13,16 @@ public abstract class ShootableObjectCtrl : NhoxMonoBehaviour
     [SerializeField] protected ShootableObjectSO shootableObject;
     public ShootableObjectSO ShootableObject => shootableObject;
 
+    [SerializeField] protected ObjShooting objShooting;
+    public ObjShooting ObjShooting => objShooting;
+
     protected override void LoadComponents()
     {
         base.LoadComponents();
         this.LoadModel();
         this.LoadDespawn();
         this.LoadSO();
+        this.LoadObjShooting();
     }
 
     protected virtual void LoadModel()
@@ -53,6 +57,17 @@ public abstract class ShootableObjectCtrl : NhoxMonoBehaviour
         string resPath = "ShootableObject/"+this.GetObjectTypeString()+"/" + transform.name;
         this.shootableObject = Resources.Load<ShootableObjectSO>(resPath);
         Debug.LogWarning(transform.name + ": Load JunkSO", gameObject);
+    }
+
+    protected virtual void LoadObjShooting()
+    {
+        if (this.objShooting != null)
+        {
+            return;
+        }
+
+        this.objShooting = GetComponentInChildren<ObjShooting>();
+        Debug.Log(transform.name + ": Load ObjShooting", gameObject);
     }
 
     protected abstract string GetObjectTypeString();
