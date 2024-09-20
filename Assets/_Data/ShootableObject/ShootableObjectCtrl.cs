@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ShootableObjectCtrl : NhoxMonoBehaviour, IObjFromSpawner
+public abstract class ShootableObjectCtrl : NhoxMonoBehaviour
 {
     [SerializeField] protected Transform model;
     public Transform Model => model;
@@ -34,6 +34,7 @@ public abstract class ShootableObjectCtrl : NhoxMonoBehaviour, IObjFromSpawner
         this.LoadObjShooting();
         this.LoadObjMovement();
         this.LoadObjLookAtTarget();
+        this.LoadSpawner();
     }
 
     protected virtual void LoadModel()
@@ -45,6 +46,17 @@ public abstract class ShootableObjectCtrl : NhoxMonoBehaviour, IObjFromSpawner
 
         this.model = transform.Find("Model");
         Debug.Log(transform.name + ": Load Model", gameObject);
+    }
+
+    protected virtual void LoadSpawner()
+    {
+        if (this.spawner != null)
+        {
+            return;
+        }
+
+        this.spawner = transform.parent?.parent?.GetComponent<Spawner>();
+        Debug.Log(transform.name + ": Load Spawner", gameObject);
     }
 
     protected virtual void LoadDespawn()
@@ -96,9 +108,4 @@ public abstract class ShootableObjectCtrl : NhoxMonoBehaviour, IObjFromSpawner
     }
 
     protected abstract string GetObjectTypeString();
-
-    public void SetSpawner(Spawner spawner)
-    {
-        this.spawner = spawner;
-    }
 }

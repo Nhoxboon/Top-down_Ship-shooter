@@ -34,7 +34,7 @@ public class SpawnerCtrl : NhoxMonoBehaviour
         {
             return;
         }
-        this.spawnPoints = Transform.FindObjectOfType<SpawnPoints>();
+        this.spawnPoints = GameObject.Find("SceneSpawnPoints").GetComponent<SpawnPoints>();
         Debug.Log(transform.name + ": Load SpawnPoints", gameObject);
     }
 }

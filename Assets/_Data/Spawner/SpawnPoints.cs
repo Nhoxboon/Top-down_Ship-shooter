@@ -22,7 +22,7 @@ public class SpawnPoints : NhoxMonoBehaviour
         {
             this.points.Add(point);
         }
-        Debug.Log(transform.name + ": Load Points", gameObject);
+        //Debug.Log(transform.name + ": Load Points", gameObject);
     }
 
     public virtual Transform GetRandom()

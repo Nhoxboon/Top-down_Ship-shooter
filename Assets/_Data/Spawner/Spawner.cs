@@ -77,9 +77,6 @@ public abstract class Spawner : NhoxMonoBehaviour
         newPrefab.parent = this.holder;
         this.spawnerCount++;
 
-        IObjFromSpawner objFromSpawner = newPrefab.GetComponent<IObjFromSpawner>();
-        objFromSpawner.SetSpawner(this);
-
         return newPrefab;
     }
 
