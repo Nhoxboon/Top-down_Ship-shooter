@@ -18,6 +18,11 @@ public abstract class ObjAppearing : NhoxMonoBehaviour
         base.Start();
         this.OnAppearStart();
     }
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        this.OnAppearStart();
+    }
 
     protected virtual void FixedUpdate()
     {

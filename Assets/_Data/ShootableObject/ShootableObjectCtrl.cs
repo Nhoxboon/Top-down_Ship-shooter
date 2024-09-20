@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ShootableObjectCtrl : NhoxMonoBehaviour
+public abstract class ShootableObjectCtrl : NhoxMonoBehaviour, IObjFromSpawner
 {
     [SerializeField] protected Transform model;
     public Transform Model => model;
@@ -21,6 +21,9 @@ public abstract class ShootableObjectCtrl : NhoxMonoBehaviour
 
     [SerializeField] protected ObjLookAtTarget objLookAtTarget;
     public ObjLookAtTarget ObjLookAtTarget => objLookAtTarget;
+
+    [SerializeField] protected Spawner spawner;
+    public Spawner Spawner => spawner;
 
     protected override void LoadComponents()
     {
@@ -93,4 +96,9 @@ public abstract class ShootableObjectCtrl : NhoxMonoBehaviour
     }
 
     protected abstract string GetObjectTypeString();
+
+    public void SetSpawner(Spawner spawner)
+    {
+        this.spawner = spawner;
+    }
 }

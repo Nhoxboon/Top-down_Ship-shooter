@@ -76,6 +76,10 @@ public abstract class Spawner : NhoxMonoBehaviour
 
         newPrefab.parent = this.holder;
         this.spawnerCount++;
+
+        IObjFromSpawner objFromSpawner = newPrefab.GetComponent<IObjFromSpawner>();
+        objFromSpawner.SetSpawner(this);
+
         return newPrefab;
     }
 
@@ -119,5 +123,10 @@ public abstract class Spawner : NhoxMonoBehaviour
     {
         int rand = Random.Range(0, this.prefabs.Count);
         return this.prefabs[rand];
+    }
+
+    public virtual void Hold(Transform obj)
+    {
+        obj.parent = this.holder;
     }
 }
