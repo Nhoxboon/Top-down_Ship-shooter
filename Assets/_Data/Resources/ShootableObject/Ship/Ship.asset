@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objName: Ship
   objType: 4
-  hpMax: 5
+  hpMax: 100
   dropList: []

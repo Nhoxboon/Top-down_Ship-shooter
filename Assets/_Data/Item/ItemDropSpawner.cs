@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ItemDropSpawner : Spawner
 {
     private static ItemDropSpawner instance;
     public static ItemDropSpawner Instance => instance;
+
+    [SerializeField] protected float gameDropRate = 1f;
 
     protected override void Awake()
     {
@@ -18,17 +21,71 @@ public class ItemDropSpawner : Spawner
         ItemDropSpawner.instance = this;
     }
 
-    public virtual void Drop(List<DropRate> dropList, Vector3 pos, Quaternion rot)
+    public virtual List<ItemDropRate> Drop(List<ItemDropRate> dropList, Vector3 pos, Quaternion rot)
     {
-        //TODO: drop with rating
-        if (dropList.Count < 1) return;
-        ItemCode itemCode = dropList[0].itemSO.itemCode;
-        Transform itemDrop = this.Spawn(itemCode.ToString(), pos, rot);
-        if (itemDrop == null) return;
-        itemDrop.gameObject.SetActive(true);
+        List<ItemDropRate> dropItems = new List<ItemDropRate>();
+
+        if (dropList.Count < 1) return dropItems;
+
+        dropItems = this.DropItems(dropList);
+        foreach(ItemDropRate itemDropRate in dropItems)
+        {
+            ItemCode itemCode = itemDropRate.itemSO.itemCode;
+            Transform itemDrop = this.Spawn(itemCode.ToString(), pos, rot);
+            if (itemDrop == null) continue;
+            itemDrop.gameObject.SetActive(true);
+        }
+
+        return dropItems;
     }
 
-    public virtual Transform Drop(ItemInventory itemInventory, Vector3 pos, Quaternion rot)
+    protected virtual List<ItemDropRate> DropItems(List<ItemDropRate> items)
+    {
+        List<ItemDropRate> droppedItems = new List<ItemDropRate>();
+
+        float rate, itemRate;
+        int itemDropMore;
+
+        foreach (ItemDropRate item in items)
+        {
+            rate = Random.Range(0, 1f);
+            itemRate = (item.dropRate/100000f) * this.GameDropRate();
+            itemDropMore = Mathf.FloorToInt(itemRate);
+            if (itemDropMore > 0)
+            {
+                itemRate -= itemDropMore;
+                for(int i = 0; i < itemDropMore; i++)
+                {
+                    droppedItems.Add(item);
+                }
+            }
+
+            Debug.Log("===============");
+            Debug.Log("Item: " + item.itemSO.itemName);
+            Debug.Log("Rate: " + itemRate + "/" + rate);
+            Debug.Log("ItemDropMore: " + itemDropMore);
+
+
+
+
+            if (rate <= itemRate)
+            {
+                //Debug.Log("DROPED");
+                droppedItems.Add(item);
+            }
+        }
+
+        return droppedItems;
+    }
+
+    protected virtual float GameDropRate()
+    {
+        float dropRateFromItems = 0f; //Now not implemented
+
+        return this.gameDropRate + dropRateFromItems;
+    }
+
+    public virtual Transform DropFromInventory(ItemInventory itemInventory, Vector3 pos, Quaternion rot)
     {
         ItemCode itemCode = itemInventory.itemProfile.itemCode;
         Transform itemDrop = this.Spawn(itemCode.ToString(), pos, rot);
