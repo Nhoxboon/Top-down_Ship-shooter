@@ -19,11 +19,14 @@ public class ObjAppearingBigger : ObjAppearing
 
     protected override void Appearing()
     {
+        if (this.appeared) return;
+
         this.currentScale += this.speedScale;
         transform.parent.localScale = new Vector3(this.currentScale, this.currentScale, this.currentScale);
 
-        if(this.currentScale >= this.maxScale)
+        if (this.currentScale >= this.maxScale)
         {
+            transform.parent.localScale = new Vector3(this.maxScale, this.maxScale, this.maxScale);
             this.Appear();
         }
     }
@@ -32,11 +35,5 @@ public class ObjAppearingBigger : ObjAppearing
     {
         transform.parent.localScale = Vector3.zero;
         this.currentScale = this.startScale;
-    }
-
-    public override void Appear()
-    {
-        base.Appear();
-        transform.parent.localScale = new Vector3(this.maxScale, this.maxScale, this.maxScale);
     }
 }

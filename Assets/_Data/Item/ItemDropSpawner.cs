@@ -60,10 +60,10 @@ public class ItemDropSpawner : Spawner
                 }
             }
 
-            Debug.Log("===============");
-            Debug.Log("Item: " + item.itemSO.itemName);
-            Debug.Log("Rate: " + itemRate + "/" + rate);
-            Debug.Log("ItemDropMore: " + itemDropMore);
+            //Debug.Log("===============");
+            //Debug.Log("Item: " + item.itemSO.itemName);
+            //Debug.Log("Rate: " + itemRate + "/" + rate);
+            //Debug.Log("ItemDropMore: " + itemDropMore);
 
 
 

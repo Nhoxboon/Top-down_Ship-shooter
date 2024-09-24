@@ -6,11 +6,9 @@ public abstract class ObjAppearing : NhoxMonoBehaviour
 {
     [Header("Obj Appearing")]
 
-    [SerializeField] protected bool isAppearing = false;
     [SerializeField] protected bool appeared = false;
     [SerializeField] protected List<IObjAppearObserver> observers = new List<IObjAppearObserver>(); //Observer Pattern(ShootableObjectAbtract, ObjAppearWithoutShoot, ObjAppearing)
 
-    public bool IsAppearing => isAppearing;
     public bool Appeared => appeared;
 
     protected override void Start()
@@ -18,9 +16,15 @@ public abstract class ObjAppearing : NhoxMonoBehaviour
         base.Start();
         this.OnAppearStart();
     }
-    protected override void OnEnable()
+    //protected override void OnEnable()
+    //{
+    //    base.OnEnable();
+    //    this.OnAppearStart();
+    //}
+    protected override void OnDisable()
     {
-        base.OnEnable();
+        base.OnDisable();
+        this.appeared = false;
         this.OnAppearStart();
     }
 
@@ -34,7 +38,6 @@ public abstract class ObjAppearing : NhoxMonoBehaviour
     public virtual void Appear()
     {
         this.appeared = true;
-        this.isAppearing = false;
         this.OnAppearFinish();
     }
 
