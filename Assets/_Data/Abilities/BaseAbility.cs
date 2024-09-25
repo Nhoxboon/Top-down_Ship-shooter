@@ -18,6 +18,11 @@ public abstract class BaseAbility : NhoxMonoBehaviour
         this.Timing();
     }
 
+    protected virtual void Update()
+    {
+        //
+    }
+
     protected override void LoadComponents()
     {
         base.LoadComponents();

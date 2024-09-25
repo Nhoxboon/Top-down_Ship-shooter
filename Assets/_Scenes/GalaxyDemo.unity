@@ -259,6 +259,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 26174479}
+  - component: {fileID: 26174480}
   m_Layer: 0
   m_Name: AbilityWarp
   m_TagString: Untagged
@@ -281,6 +282,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 566708599}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &26174480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26174478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4774a527dd7b23942b07aa762a09f5aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilities: {fileID: 566708600}
+  timer: 2
+  delay: 2
+  isReady: 0
+  spawner: {fileID: 0}
+  isWarping: 0
+  warpDirection: {x: 0, y: 0, z: 0, w: 0}
+  warpSpeed: 0.3
+  warpDistance: 2
 --- !u!1 &48112207
 GameObject:
   m_ObjectHideFlags: 0
@@ -1886,6 +1908,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 566708599}
+  - component: {fileID: 566708600}
   m_Layer: 0
   m_Name: Abilities
   m_TagString: Untagged
@@ -1909,6 +1932,19 @@ Transform:
   - {fileID: 26174479}
   m_Father: {fileID: 1742364906}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &566708600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566708598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cb305b13fe8c474083bc98d473603e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityObjetCtrl: {fileID: 1742364907}
 --- !u!1 &569348967
 GameObject:
   m_ObjectHideFlags: 0
@@ -4207,7 +4243,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1379151358
 Transform:
   m_ObjectHideFlags: 0
