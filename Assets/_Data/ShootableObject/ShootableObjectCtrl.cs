@@ -25,6 +25,9 @@ public abstract class ShootableObjectCtrl : NhoxMonoBehaviour
     [SerializeField] protected Spawner spawner;
     public Spawner Spawner => spawner;
 
+    [SerializeField] protected DamageReceiver damageReceiver;
+    public DamageReceiver DamageReceiver => damageReceiver;
+
     protected override void LoadComponents()
     {
         base.LoadComponents();
@@ -35,6 +38,7 @@ public abstract class ShootableObjectCtrl : NhoxMonoBehaviour
         this.LoadObjMovement();
         this.LoadObjLookAtTarget();
         this.LoadSpawner();
+        this.LoadDamageReceive();
     }
 
     protected virtual void LoadModel()
@@ -45,7 +49,7 @@ public abstract class ShootableObjectCtrl : NhoxMonoBehaviour
         }
 
         this.model = transform.Find("Model");
-        Debug.Log(transform.name + ": Load Model", gameObject);
+        Debug.LogWarning(transform.name + ": Load Model", gameObject);
     }
 
     protected virtual void LoadSpawner()
@@ -56,7 +60,7 @@ public abstract class ShootableObjectCtrl : NhoxMonoBehaviour
         }
 
         this.spawner = transform.parent?.parent?.GetComponent<Spawner>();
-        Debug.Log(transform.name + ": Load Spawner", gameObject);
+        Debug.LogWarning(transform.name + ": Load Spawner", gameObject);
     }
 
     protected virtual void LoadDespawn()
@@ -67,7 +71,7 @@ public abstract class ShootableObjectCtrl : NhoxMonoBehaviour
         }
 
         this.despawn = transform.GetComponentInChildren<Despawn>();
-        Debug.Log(transform.name + ": Load Despawn", gameObject);
+        Debug.LogWarning(transform.name + ": Load Despawn", gameObject);
     }
 
     protected virtual void LoadSO()
@@ -105,6 +109,17 @@ public abstract class ShootableObjectCtrl : NhoxMonoBehaviour
         if (this.objLookAtTarget != null) return;
         this.objLookAtTarget = GetComponentInChildren<ObjLookAtTarget>();
         Debug.LogWarning(transform.name + ": LoadObjLookAtTarget", gameObject);
+    }
+
+    protected virtual void LoadDamageReceive()
+    {
+        if (this.damageReceiver != null)
+        {
+            return;
+        }
+
+        this.damageReceiver = transform.GetComponentInChildren<DamageReceiver>();
+        Debug.LogWarning(transform.name + ": Load DamageReceiver", gameObject);
     }
 
     protected abstract string GetObjectTypeString();
