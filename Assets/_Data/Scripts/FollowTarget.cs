@@ -18,4 +18,9 @@ public class FollowTarget : NhoxMonoBehaviour
 
         transform.position = Vector3.Lerp(transform.position, this.target.position, this.speed * Time.fixedDeltaTime);
     }
+
+    public virtual void SetTarget(Transform target)
+    {
+        this.target = target;
+    }
 }

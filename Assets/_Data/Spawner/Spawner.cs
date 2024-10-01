@@ -74,7 +74,7 @@ public abstract class Spawner : NhoxMonoBehaviour
         Transform newPrefab = this.GetObjectFromPool(prefab);
         newPrefab.SetPositionAndRotation(spawnPos, rotation);
 
-        newPrefab.parent = this.holder;
+        newPrefab.SetParent(this.holder);
         this.spawnerCount++;
 
         return newPrefab;

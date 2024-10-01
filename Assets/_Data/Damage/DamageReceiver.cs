@@ -69,7 +69,7 @@ public abstract class DamageReceiver : NhoxMonoBehaviour
         this.CheckIsDead();
     }
 
-    protected virtual bool IsDead()
+    public virtual bool IsDead()
     {
         return this.hp <= 0;
     }
