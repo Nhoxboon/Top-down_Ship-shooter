@@ -11,7 +11,7 @@ public class Inventory : NhoxMonoBehaviour
     protected override void Start()
     {
         base.Start();
-        //this.AddItem(ItemCode.CopperSword, 1);
+        this.AddItem(ItemCode.CopperSword, 1);
         //this.AddItem(ItemCode.GoldOre, 20);
         //this.AddItem(ItemCode.IronOre, 20);
     }
