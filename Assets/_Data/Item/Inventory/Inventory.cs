@@ -12,8 +12,8 @@ public class Inventory : NhoxMonoBehaviour
     {
         base.Start();
         this.AddItem(ItemCode.CopperSword, 1);
-        //this.AddItem(ItemCode.GoldOre, 20);
-        //this.AddItem(ItemCode.IronOre, 20);
+        this.AddItem(ItemCode.GoldOre, 20);
+        this.AddItem(ItemCode.IronOre, 20);
     }
 
     public virtual bool AddItem(ItemInventory itemInventory)
