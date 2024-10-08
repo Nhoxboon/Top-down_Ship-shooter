@@ -133,6 +133,7 @@ public class Inventory : NhoxMonoBehaviour
     {
         ItemInventory itemInventory = new ItemInventory
         {
+            itemId = ItemInventory.RandomId(),
             itemProfile = itemProfile,
             maxStack = itemProfile.defaultMaxStack
         };

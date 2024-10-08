@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class UIInventoryCtrl : NhoxMonoBehaviour
 {
+    [Header("Inv Item Ctrl")]
+
     [SerializeField] protected Transform content;
     public Transform Content => content;
 
-    [Header("Inv Item Ctrl")]
+    
     [SerializeField] protected UIInvItemSpawner invItemSpawner;
     public UIInvItemSpawner InvItemSpawner => invItemSpawner;
 

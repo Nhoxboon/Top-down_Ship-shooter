@@ -302,6 +302,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemDespawn: {fileID: 1156896781}
   itemInventory:
+    itemId: 
     itemProfile: {fileID: 11400000, guid: e69c9685166b33246aa2b6c8466e7478, type: 2}
     itemCount: 1
     maxStack: 7
@@ -916,8 +917,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 9, y: -9}
-  m_SizeDelta: {x: 90, y: 16}
+  m_AnchoredPosition: {x: 41.9, y: -9}
+  m_SizeDelta: {x: 155.8, y: 16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &195365400
 MonoBehaviour:
@@ -966,8 +967,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 16
+  m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5496,8 +5497,8 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 80, y: 60}
-  m_Spacing: {x: 0, y: 0}
+  m_CellSize: {x: 100, y: 60}
+  m_Spacing: {x: 20, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
 --- !u!114 &1156233802
@@ -5865,7 +5866,7 @@ GameObject:
   - component: {fileID: 1291605258}
   - component: {fileID: 1291605257}
   m_Layer: 5
-  m_Name: ItemCount
+  m_Name: ItemNumber
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5887,7 +5888,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 9.000007, y: -36.999996}
+  m_AnchoredPosition: {x: 9.000007, y: -29}
   m_SizeDelta: {x: 90, y: 16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1291605257
@@ -5937,8 +5938,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 16
+  m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -7159,6 +7160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemDespawn: {fileID: 868894517}
   itemInventory:
+    itemId: 
     itemProfile: {fileID: 11400000, guid: 3d559935d436407489ba6f2e5f8a01d7, type: 2}
     itemCount: 1
     maxStack: 7
@@ -8111,6 +8113,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1898123632}
+  - component: {fileID: 1898123633}
   m_Layer: 5
   m_Name: UIInvItem
   m_TagString: Untagged
@@ -8139,6 +8142,26 @@ RectTransform:
   m_AnchoredPosition: {x: -110, y: 69.99999}
   m_SizeDelta: {x: 80, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1898123633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1898123631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a13778b1ae45094fa97d7fcc4a22dff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemInventory:
+    itemId: 
+    itemProfile: {fileID: 0}
+    itemCount: 0
+    maxStack: 7
+    upgradeLevel: 0
+  itemName: {fileID: 195365400}
+  itemNumber: {fileID: 1291605257}
 --- !u!1 &1910506209
 GameObject:
   m_ObjectHideFlags: 0
@@ -8341,6 +8364,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemDespawn: {fileID: 424152339}
   itemInventory:
+    itemId: 
     itemProfile: {fileID: 11400000, guid: c3cea1f50876b6e4886dfa500cee8bfe, type: 2}
     itemCount: 1
     maxStack: 7

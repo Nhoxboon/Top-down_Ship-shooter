@@ -51,4 +51,15 @@ public class UIInvItemSpawner : Spawner
         }
     }
 
+    public virtual void SpawnItem(ItemInventory item)
+    {
+        Transform uiItem = this.inventoryCtrl.InvItemSpawner.Spawn(UIInvItemSpawner.normalItem, Vector3.zero, Quaternion.identity);
+        uiItem.transform.localScale = new Vector3(1, 1, 1);
+
+        UIItemInventory itemInventory = uiItem.GetComponent<UIItemInventory>();
+        itemInventory.ShowItem(item);
+
+        uiItem.gameObject.SetActive(true);
+    }
+
 }
