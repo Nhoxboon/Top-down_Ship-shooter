@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -70,12 +71,17 @@ public class UIInventory : UIInventoryAbstract
         this.SortItems();
     }
 
+    protected virtual void ClearItems()
+    {
+        this.inventoryCtrl.InvItemSpawner.ClearItems();
+    }
+
     protected virtual void SortItems()
     {
         switch (this.inventorySort)
         {
             case InventorySort.ByName:
-                Debug.Log("Sort by name");
+                this.SortByName();
                 break;
             case InventorySort.ByCount:
                 Debug.Log("Sort by count");
@@ -86,9 +92,52 @@ public class UIInventory : UIInventoryAbstract
         }
     }
 
-    protected virtual void ClearItems()
+    protected virtual void SortByName()
     {
-        this.inventoryCtrl.InvItemSpawner.ClearItems();
+        //Debug.Log("== InventorySort.ByName ====");
+
+        int itemCount = this.inventoryCtrl.Content.childCount;
+        Transform currentItem, nextItem;
+        UIItemInventory currentUIItem, nextUIItem;
+        ItemProfileSO currentProfile, nextProfile;
+        string currentName, nextName;
+
+        bool isSorting = false;
+        for (int i = 0; i < itemCount - 1; i++)
+        {
+            currentItem = this.inventoryCtrl.Content.GetChild(i);
+            nextItem = this.inventoryCtrl.Content.GetChild(i + 1);
+
+            currentUIItem = currentItem.GetComponent<UIItemInventory>();
+            nextUIItem = nextItem.GetComponent<UIItemInventory>();
+
+            currentProfile = currentUIItem.ItemInventory.itemProfile;
+            nextProfile = nextUIItem.ItemInventory.itemProfile;
+
+            currentName = currentProfile.itemName;
+            nextName = nextProfile.itemName;
+
+            int compare = string.Compare(currentName, nextName);
+
+            if (compare == 1)
+            {
+                this.SwapItems(currentItem, nextItem);
+                isSorting = true;
+            }
+
+            //Debug.Log(i + ": " + currentName + " | " + nextName + " = " + compare);
+        }
+
+        if (isSorting) this.SortByName(); //Recursion/De quy
+    }
+
+    protected virtual void SwapItems(Transform currentItem, Transform nextItem)
+    {
+        int currentIndex = currentItem.GetSiblingIndex();
+        int nextIndex = nextItem.GetSiblingIndex();
+
+        currentItem.SetSiblingIndex(nextIndex);
+        nextItem.SetSiblingIndex(currentIndex);
     }
 
 
